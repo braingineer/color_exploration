@@ -1,30 +1,31 @@
 Things that need to be done:
-<p>
-<h3>1. Apache2</h3>
+
+1. Apache2
 -Just install for now.  on linux, sudo apt-get install apache2
-</p><p>
-<h3>2. MySQL</h3>
+
+2. MySQL
 -Install. Create a database called colors.  from terminal
 mysql -u root -p
 ([type in password]
 create database colors;
-exit;<br>
+exit;
+
 Then navigate to where the mysqldump is for colors.  make sure restore has the right permissions:
 sudo chmod 771 restore
 Then use restore to load in the dump (the .sql file)
 restore colors
 The name of the file needs to be colors.sql (same name as the database)
 and  you can't pass in the filename with its extension (the .sql part) because it uses the name in the mysql call to say "use this database please"
-</p><p>
-<h3>3. Python </h3>
+
+3. Python
 sorry that most of these directions are for linux.  on windows/mac there should be a similar analog or some webpage found via google
 get python 2.7. also get the dev package (sudo apt-get install python2.7-dev , i think. the dash may or may not be there).  
 get setup-tools ( go to http://pypi.python.org/pypi/setuptools , download appropriate version, the 'sudo sh [filename]')
 get python-mysql ( also called mysqldb, found at http://sourceforge.net/projects/mysql-python/  , there's a file INSTALL that comes with it, but basically it's 'python setup.py build' then 'sudo python setup.py install'  if you're on linux you can also do a sudo apt-get install python-mysql ... i realized this after I went through all the problems.  see my mysqldb.instaljournal for details if you run into problems, maybe I had the same problem)
 get matplotlib.  there are usually no issues with this one.  
 this should be it for the python dependencies.
-</p><p>
-<h3>4. Server setup (do this last)</h3>
+
+4. Server setup (do this last)
 go into /etc/apache2 and configure the 000-default conf file in the sites-enabled folder
 here you want to add:
 ScriptAlias /somepaththing/ /var/www/somefoldername/
@@ -52,4 +53,4 @@ basically: ln /home/brian/workspace/color/src/color.py /var/www/dev/color.py  --
 
 The reason for the chown (change owner) is because apache operates under the www-data user group, and my username is brian.  this allows for me to 'own' the file and 'www-data' to be granted permissions on the file.  the chmod changes permissions for 3 different levels at once.  the first is the '7' part.  it is a representation of a 3 bit binary number: 111 which reprsents 'rwx', so that the '4' bit is 'r', '2' bit is 'w', and '1' bit is 'x'.  7 is 'rwx', 5 is 'r-x'.  the 775 sets a 7 for owner, 7 for group, and 5 for everyone else.  Since I have set the group to www-data, apache gets to read, write, and execute.  
 
-</P>
+
