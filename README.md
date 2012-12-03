@@ -6,7 +6,7 @@ Things that need to be done:
 <h3>2. MySQL</h3>
 -Install. Create a database called colors.  from terminal <br>
 mysql -u root -p <br>
-([type in password] <br>
+[type in password] <br>
 create database colors; <br>
 exit;<br>
 Then navigate to where the mysqldump is for colors.  make sure restore has the right permissions: <br>
@@ -18,22 +18,23 @@ and  you can't pass in the filename with its extension (the .sql part) because i
 </p><p>
 <h3>3. Python </h3>
 sorry that most of these directions are for linux.  on windows/mac there should be a similar analog or some webpage found via google <br>
-get python 2.7. also get the dev package (sudo apt-get install python2.7-dev , i think. the dash may or may not be there).   <br>
-get setup-tools ( go to http://pypi.python.org/pypi/setuptools , download appropriate version, the 'sudo sh [filename]') <br>
-get python-mysql ( also called mysqldb, found at http://sourceforge.net/projects/mysql-python/  , there's a file INSTALL that comes with it, but basically it's 'python setup.py build' then 'sudo python setup.py install'  if you're on linux you can also do a sudo apt-get install python-mysql ... i realized this after I went through all the problems.  see my mysqldb.instaljournal for details if you run into problems, maybe I had the same problem)<br>
-get matplotlib.  there are usually no issues with this one.  <br>
+* get python 2.7. also get the dev package (sudo apt-get install python2.7-dev , i think. the dash may or may not be there).   <br>
+* get setup-tools ( go to http://pypi.python.org/pypi/setuptools , download appropriate version, the 'sudo sh [filename]') <br>
+* get python-mysql ( also called mysqldb, found at http://sourceforge.net/projects/mysql-python/  , there's a file INSTALL that comes with it, but basically it's 'python setup.py build' then 'sudo python setup.py install'  if you're on linux you can also do a sudo apt-get install python-mysql ... i realized this after I went through all the problems.  see my mysqldb.instaljournal for details if you run into problems, maybe I had the same problem)<br>
+* get matplotlib.  there are usually no issues with this one.  <br>
+
 this should be it for the python dependencies. <br>
 </p><p>
 <h3>4. Server setup (do this last)</h3>
 go into /etc/apache2 and configure the 000-default conf file in the sites-enabled folder<br>
 here you want to add:<br>
-ScriptAlias /somepaththing/ /var/www/somefoldername/<br>
-<Directory "/var/www/somefoldername/"><br>
-&emsp;	AllowOverride None<br>
-&emsp;	Options +ExecCGI -Multiviews +SymLinksIfOwnerMatch<br>
-&emsp;	Order allow,deny <br>
-&emsp;	Allow from all <br>
-</Directory><br>
+'''ScriptAlias /somepaththing/ /var/www/somefoldername/
+<Directory "/var/www/somefoldername/">
+	AllowOverride None
+	Options +ExecCGI -Multiviews +SymLinksIfOwnerMatch
+	Order allow,deny
+	Allow from all
+</Directory>'''<br>
 <br>
 where somepaththing will become a localhost/somepaththing and somefoldername is the folder inside your apache's document root directory  <br>
 <br>
