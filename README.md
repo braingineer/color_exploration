@@ -1,7 +1,11 @@
-Things that need to be done:
+Steps for setting up a server, importing the database, and running the color exploration code:<br>
+(Note): instructions are for linux. 'sudo apt-get install' installs packages, so for other OSs, try and download via google. or email me. <br>
 <p>
 <h3>1. Apache2</h3>
--Just install for now.  on linux, sudo apt-get install apache2
+-Just install for now.  on linux, sudo apt-get install apache2 <br>
+-if unfamiliar with apache2, check to see if it's working by typing ONLY 'localhost' into the web browser.  <br>
+--Apache2 hosts a webserver on your computer, 'localhost' is synonymous with '127.0.0.1' which is the IP designating yourself (it's like a callback loop) <br>
+--Apache2 has a root document folder (in linux, typically /var/www/) in which it hosts these files from. <br> 
 </p><p>
 <h3>2. MySQL</h3>
 -Install. Create a database called colors.  from terminal <br>
