@@ -47,10 +47,10 @@ If you decide to put scripts and images somewhere not underneath the document ro
 After you have the images and scripts folders created, and the paths correctly pointing (the variables to set are at the top of the color.py), put the processing.js in the scripts folder<br>
 
 What I did for the color.py is mildly complicated.  I didn't want to have to worry about running, editing, copying, etc, so I made a hard link between my workspace and the /somefoldername/ 
-basically: ln /home/brian/workspace/color/src/color.py /var/www/dev/color.py  -- and then inside the dev/ folder, I did the following to allow apache to run it: <br>
+<br>basically: 'ln /home/brian/workspace/color/src/color.py /var/www/dev/color.py'  -- and then inside the dev/ folder, I did the following to allow apache to run it: <br>
 'chown brian:www-data . color.py processing.js' <br>
 'chmod 0775 . color.py processing.js' <br>
 <br>
 The reason for the chown (change owner) is because apache operates under the www-data user group, and my username is brian.  this allows for me to 'own' the file and 'www-data' to be granted permissions on the file.  the chmod changes permissions for 3 different levels at once.  the first is the '7' part.  it is a representation of a 3 bit binary number: 111 which reprsents 'rwx', so that the '4' bit is 'r', '2' bit is 'w', and '1' bit is 'x'.  7 is 'rwx', 5 is 'r-x'.  the 775 sets a 7 for owner, 7 for group, and 5 for everyone else.  Since I have set the group to www-data, apache gets to read, write, and execute.  <br>
 <br>
-</P>
+</p>
