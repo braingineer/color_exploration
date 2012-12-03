@@ -28,13 +28,13 @@ this should be it for the python dependencies. <br>
 <h3>4. Server setup (do this last)</h3>
 go into /etc/apache2 and configure the 000-default conf file in the sites-enabled folder<br>
 here you want to add:<br>
-'''ScriptAlias /somepaththing/ /var/www/somefoldername/
+<code>ScriptAlias /somepaththing/ /var/www/somefoldername/
 <Directory "/var/www/somefoldername/">
 	AllowOverride None
 	Options +ExecCGI -Multiviews +SymLinksIfOwnerMatch
 	Order allow,deny
 	Allow from all
-</Directory>'''<br>
+</Directory></code><br>
 <br>
 where somepaththing will become a localhost/somepaththing and somefoldername is the folder inside your apache's document root directory  <br>
 <br>
